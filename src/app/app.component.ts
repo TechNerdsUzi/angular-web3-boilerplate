@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import detectEthereumProvider from '@metamask/detect-provider';
 import metaMaskOnboarding from '@metamask/onboarding';
+import { Web3Service } from './services/web3.service';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ export class AppComponent {
   title = 'angular-web3-boilerplate';
   public is_metamask_install: boolean = false;
 
-  constructor(){
+  constructor(public _web3Service: Web3Service){
     this.detectMetaMask();
   }
 

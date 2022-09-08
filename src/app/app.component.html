@@ -11,12 +11,10 @@
 
 <div class="app">
   <div>
-    <p>MetaMask is Install = {{is_metamask_install}}</p>
     <ng-container *ngIf="is_metamask_install">
-      <button>Connect MetaMask</button>
+      <h1 *ngIf="(this._web3Service.$walletAddress | async)">{{this._web3Service.$walletAddress | async}}</h1>
+      <button *ngIf="!(this._web3Service.$walletAddress | async)" (click)="this._web3Service.connectMetaMask()">Connect MetaMask</button>
     </ng-container>
-
     <button *ngIf="!is_metamask_install" (click)="installMetaMask()">Install MetaMask</button>
-
   </div>
 </div>
